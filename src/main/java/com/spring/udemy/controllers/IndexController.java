@@ -1,5 +1,9 @@
 package com.spring.udemy.controllers;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,7 +55,12 @@ public class IndexController {
    
     @GetMapping("/listar")
     public String listar(Model model){
+        List<Usuario>usuarios = new ArrayList<>();
+        usuarios.add(new Usuario("Juan", "Paco", "juan@gmail.com"));
+        usuarios.add(new Usuario("Lolo", "Laslo", "laslo@gmail.com"));
+        usuarios.add(new Usuario("Tero", "Dactilo", "dactilo@gmail"));
         model.addAttribute("titulo", textoListar);
+        model.addAttribute("usuarios", usuarios);
         return "listar";
     }
     
